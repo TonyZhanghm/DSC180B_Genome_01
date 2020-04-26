@@ -1,0 +1,12 @@
+{
+    "data_dir": "data/",
+    "filename": "adgwas",
+    "covar_file": "samples.covar",
+    "filter_output": "crytic",
+    "hwe": ".5",
+    "maf": ".01",
+    "geno": ".1",
+    "mind": ".1",
+    "chr": "1-22",
+    "min": ".2"
+}
