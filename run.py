@@ -2,7 +2,7 @@ import sys
 import json
 import argparse
 sys.path.insert(0, 'src')
-from etl import get_data, filter_recode, pca
+from etl import get_data, filter_recode, pca, logistic_regression
 
 DATA_PARAMS = 'config/data-params.json'
 TEST_PARAMS = 'config/test-params.json'
@@ -25,3 +25,5 @@ elif args.process[0]=="filter":
     filter_recode(cfg['filename'], cfg['covar_file'], cfg['data_dir'], cfg['filter_output'], cfg['hwe'], cfg['maf'], cfg['geno'], cfg['mind'], cfg['chr'], cfg['min'])
 elif args.process[0]=='pca':
     pca(cfg['data_dir'], cfg['filter_output'])
+elif args.process[0]=='logistic':
+    logistic_regression(cfg['data_dir'])
