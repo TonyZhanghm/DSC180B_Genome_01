@@ -2,6 +2,8 @@
 
 ### Tony Zhang, Zhuoyuan Ren, Haoshu Qin
 
+Visualization Website: https://tonyzhanghm.github.io/adgwas_website/
+
 ## Checkpoint-1
 - Request data from source: UK Biobank and NIAGADS
 - Understand the analysis methods: meta analysis, Manhattan plot, regional association plot. 
