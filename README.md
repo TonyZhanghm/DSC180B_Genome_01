@@ -9,3 +9,11 @@
 - Summarize relevant details of the data generating process, describing the population that the data represents, whether that population is relevant to the question at hand, while addressing possible questions of data reliability.
 - Understand how to use population stratification on our data so that it can apply to other races besides European descent.
 - no new code added
+
+## Checkpoint-2
+- Describe the source of the backup dataset, the population that the data represents, whether that population is relevant to the question at hand, while addressing possible questions of data reliability. (Scott)
+- Perform preprocessing quality controls using Plink commands (Jared, Tony)
+- Statistically assess the quality of the data (Tony)
+- EDA (Barplot, PCA, Scatter matrix plot, Scree Plot) (All)
+- Perform multi-covariate association analysis with logistic regression (Tony)
+
