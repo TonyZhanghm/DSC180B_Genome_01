@@ -3,8 +3,8 @@ import json
 import argparse
 sys.path.insert(0, 'src')
 from etl import get_data
-from eda import filter_recode, pca
-from analysis import logistic_regression
+from eda import filter_recode, pca, plot_pca, plot_eigenval
+from analysis import logistic_regression, plot_manhattan, plot_regional_manhattan
 
 DATA_PARAMS = 'config/data-params.json'
 TEST_PARAMS = 'config/test-params.json'
@@ -33,10 +33,26 @@ if __name__ == "__main__":
     elif args.process[0]=='pca':
         cfg = load_params(FINAL_PARAMS)
         pca(cfg['data_dir'], cfg['filter_output'])
+        
+    elif args.process[0]=='plot_pca':
+        cfg = load_params(FINAL_PARAMS)
+        plot_pca(cfg['data_dir']+'pca.eigenvec', cfg['output_dir'])
+        
+    elif args.process[0]=='plot_eigenval':
+        cfg = load_params(FINAL_PARAMS)
+        plot_eigenval(cfg['data_dir']+'pca.eigenval', cfg['output_dir'])
 
     elif args.process[0]=='logistic':
         cfg = load_params(FINAL_PARAMS)
         logistic_regression(cfg['data_dir'])
+        
+    elif args.process[0]=='manhattan':
+        cfg = load_params(FINAL_PARAMS)
+        plot_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
+        
+    elif args.process[0]=='manhattan':
+        cfg = load_params(FINAL_PARAMS)
+        plot_regional_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['data_dir']+cfg['gene_csv'], cfg['output_dir'])
 
     elif args.process[0]=='test-project':
         cfg = load_params(DATA_PARAMS)
@@ -44,4 +60,8 @@ if __name__ == "__main__":
         cfg = load_params(TEST_PARAMS)
         filter_recode(cfg['filename'], cfg['covar_file'], cfg['data_dir'], cfg['filter_output'], cfg['hwe'], cfg['maf'], cfg['geno'], cfg['mind'], cfg['chr'], cfg['min'])
         pca(cfg['data_dir'], cfg['filter_output'])
+        plot_pca(cfg['data_dir']+'pca.eigenvec', cfg['output_dir'])
+        plot_eigenval(cfg['data_dir']+'pca.eigenval', cfg['output_dir'])
         logistic_regression(cfg['data_dir'])
+        plot_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
+        plot_regional_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['data_dir']+cfg['gene_csv'], cfg['output_dir'])

@@ -1,8 +1,10 @@
 {
     "data_dir": "data/",
+    "output_dir": "data/output/",
     "filename": "adgwas",
     "covar_file": "samples.covar",
     "filter_output": "crytic",
+    "gene_csv": "9gene.csv",
     "hwe": ".05",
     "maf": ".01",
     "geno": ".1",
