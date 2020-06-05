@@ -20,7 +20,7 @@ def plot_manhattan(file, output_dir):
     os.rename("manhatten.png", output_dir+"manhattan.png")
     
 
-def regional_manhattan(df, gene, chromo, start, end, gap=500000):
+def regional_manhattan(df, gene, chromo, start, end, gap=500000, dim = (15,10)):
     
     def set_color(pos, start, end, gene):
         if pos<start:
@@ -31,9 +31,9 @@ def regional_manhattan(df, gene, chromo, start, end, gap=500000):
     temp=df[(df['BP'].astype(int)>(int(start)-gap)) & (df['BP'].astype(int)<(int(end)+gap)) & (df['CHR']==chromo)]
     
     temp['color'] = temp['BP'].apply(lambda x: set_color(x, start, end, gene))
-    visuz.marker.mhat(df=temp, chr='color',pv='P', gwas_sign_line=True, dim=(15,10), axxlabel='{} (Chromosome {})'.format(gene, str(chromo)), dotsize=10)
+    visuz.marker.mhat(df=temp, chr='color',pv='P', gwas_sign_line=True, dim=dim, axxlabel='{} (Chromosome {})'.format(gene, str(chromo)), dotsize=10)
 
-def new_regional_manhattan (df, gene, chromo, start, end, gap=500000):
+def new_regional_manhattan (df, gene, chromo, start, end, gap=500000, dim = (10,6)):
     def set_color(pos, start, end, gene):
         if pos<start:
             return 'Left'
@@ -44,17 +44,28 @@ def new_regional_manhattan (df, gene, chromo, start, end, gap=500000):
     temp['gene'] = temp['BP'].apply(lambda x: set_color(x, start, end, gene))
     temp['-log(P)'] = -np.log10(temp['P'])
 
-    plt.figure(figsize=(10,6))
+    plt.figure(figsize=dim)
     sns.scatterplot(data=temp, x='BP', y='-log(P)', hue = 'gene').set(ylim=(0, 8))
     plt.title('Regional Manhattan Plot for {} (chr{})'.format(gene, chromo))
     plt.xlabel('Based Pairs')
     plt.savefig('manhattan.png')
     
-def plot_regional_manhattan(file, gene_csv, output_dir):
+def plot_regional_manhattan(file, gene_csv, output_dir, dim=(10,6)):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     df = pd.read_table(file, delim_whitespace=True)
     genes = pd.read_csv(gene_csv)
     for i, row in genes.iterrows():
-        new_regional_manhattan(df, row['gene'], row['chr'], row['start'], row['end'])
+        new_regional_manhattan(df, row['gene'], row['chr'], row['start'], row['end'], dim=dim)
         os.rename("manhattan.png", output_dir+"{}.png".format(row['gene'].replace('/', '_')))
+        
+def qqplot(file, output_dir, col_name = 'P'):
+    data = pd.read_table(file, delim_whitespace=True)[col_name]
+    y = -np.log10(data).sort_values().dropna()
+    X = -np.log10(np.arange(1/len(y), 1, (1-1/len(y))/(len(y))))
+    sns.set()
+    sns.scatterplot(X, y, linewidth=0)
+    plt.xlabel('-log(expected p-values)')
+    plt.ylabel('-log(observed p-values)')
+    sns.lineplot(x=-np.log10([1/len(y), 1]), y=-np.log10([1/len(y), 1]), color='red')
+    plt.savefig(output_dir+'qqplot.png')

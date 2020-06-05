@@ -4,7 +4,7 @@ import argparse
 sys.path.insert(0, 'src')
 from etl import get_data
 from eda import filter_recode, pca, plot_pca, plot_eigenval
-from analysis import logistic_regression, plot_manhattan, plot_regional_manhattan
+from analysis import logistic_regression, plot_manhattan, plot_regional_manhattan, qqplot
 
 DATA_PARAMS = 'config/data-params.json'
 TEST_PARAMS = 'config/test-params.json'
@@ -53,6 +53,10 @@ if __name__ == "__main__":
     elif args.process[0]=='regional':
         cfg = load_params(FINAL_PARAMS)
         plot_regional_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['data_dir']+cfg['gene_csv'], cfg['output_dir'])
+        
+    elif args.process[0]=='qqplot':
+        cfg = load_params(FINAL_PARAMS)
+        qqplot(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
 
     elif args.process[0]=='test-project':
         cfg = load_params(DATA_PARAMS)
@@ -65,3 +69,4 @@ if __name__ == "__main__":
         logistic_regression(cfg['data_dir'])
         plot_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
         plot_regional_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['data_dir']+cfg['gene_csv'], cfg['output_dir'])
+        qqplot(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
