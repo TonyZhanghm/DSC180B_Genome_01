@@ -50,7 +50,7 @@ if __name__ == "__main__":
         cfg = load_params(FINAL_PARAMS)
         plot_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['output_dir'])
         
-    elif args.process[0]=='manhattan':
+    elif args.process[0]=='regional':
         cfg = load_params(FINAL_PARAMS)
         plot_regional_manhattan(cfg['data_dir']+'pca1.assoc.logistic', cfg['data_dir']+cfg['gene_csv'], cfg['output_dir'])
 

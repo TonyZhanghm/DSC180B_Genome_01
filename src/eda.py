@@ -26,6 +26,7 @@ def plot_pca(filename, output_dir):
     df = df[[0,2,3,4,5,6]]
     df.columns = ['AD','PC1','PC2','PC3','PC4','PC5']
     sns.pairplot(df, hue='AD', vars=['PC1','PC2','PC3','PC4','PC5'])
+    sns.set(font_scale=1.5)
     plt.savefig(output_dir+'PCA.png')
 
 def plot_eigenval(filename, output_dir): 
@@ -34,5 +35,6 @@ def plot_eigenval(filename, output_dir):
     eigenval = pd.read_table(filename ,header=None)
     eigenval = eigenval.reset_index()
     eigenval.columns = ['PCs', 'eigenval']
-    eigenval.plot.scatter(x='PCs',y='eigenval')
+    eigenval.plot.scatter(x='PCs',y='eigenval', figsize = (9,6))
+    plt.gca().set_xticks(eigenval['PCs'].unique())
     plt.savefig(output_dir+'eigenval.png')
