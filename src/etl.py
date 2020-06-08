@@ -45,3 +45,11 @@ def get_data(file_list, data_dir):
         destination = data_dir+filename
         download_file_from_google_drive(file_id, destination)
         uncompress(destination, data_dir)
+        
+def get_metal(url):
+    cmd = shlex.split(("wget {}").format(url))
+    sp.call(cmd)
+    cmd = shlex.split(("tar xvzf Linux-metal.tar.gz"))
+    sp.call(cmd)
+    cmd = shlex.split(("rm Linux-metal.tar.gz"))
+    sp.call(cmd)

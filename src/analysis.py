@@ -69,3 +69,11 @@ def qqplot(file, output_dir, col_name = 'P'):
     plt.ylabel('-log(observed p-values)')
     sns.lineplot(x=-np.log10([1/len(y), 1]), y=-np.log10([1/len(y), 1]), color='red')
     plt.savefig(output_dir+'qqplot.png')
+    
+def meta(path, script, output_dir):
+    cmd = shlex.split(("{} {}").format(path, script))
+    sp.call(cmd)
+    cmd = shlex.split(("mv METAANALYSIS1.TBL {}").format(output_dir))
+    sp.call(cmd)
+    cmd = shlex.split(("mv METAANALYSIS1.TBL.info {}").format(output_dir))
+    sp.call(cmd)
