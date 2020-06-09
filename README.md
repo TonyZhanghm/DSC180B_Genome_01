@@ -17,18 +17,22 @@ Clone the repo: `git clone https://github.com/TonyZhanghm/DSC180B_Genome_01.git`
 To run the whole experiment: `python run.py test-project`
 
 To run the project step by step: `python run.py` with following flags:  
-`get_data`: download the raw data/ tools needed and store them in `data/`.   
+`get_data`: download the raw data  and the tools needed.   
 `filter`: filter the dataset with [PLINK 1.9](https://www.cog-genomics.org/plink/). The specific parameter choices could be found in the paper.    
 `pca`: run principal component analysis with [PLINK 1.9](https://www.cog-genomics.org/plink/).  
-`plot_pca`: plot first 5 principal components and store the result in `data/output/`.  
+`plot_pca`: plot pariplots for the first 5 principal components with [seaborn](https://seaborn.pydata.org/).  
 `plot_eigenval`: plot the scree plot.   
 `logistic`: run the association test with logistic regression.   
 `manhattan`: plot the manhattan plot with [bioinfokit](https://reneshbedre.github.io//blog/howtoinstall.html).  
-`regional`: plot regional plots for the nine genes.   
-`qqplot`: plot a qqplot on the test result.  
+`regional`: plot regional plots for the nine genes of interests.   
+`qqplot`: plot a qqplot on the test results.  
 `meta`: run metal analysis with [METAL](https://genome.sph.umich.edu/wiki/METAL_Documentation).  
 
-## Checkpoint-1
+The data will be stored in `data/` and the experiment results will be store in `data/output/`. 
+
+## Development Updates
+
+### Checkpoint-1 (04/12/2020)
 - Request data from source: UK Biobank and NIAGADS
 - Understand the analysis methods: meta analysis, Manhattan plot, regional association plot. 
 - Write a survey of the data you are using, the relationship and appropriateness of the data to the problem under examination, and the context in which the data was created.
@@ -36,7 +40,7 @@ To run the project step by step: `python run.py` with following flags:
 - Understand how to use population stratification on our data so that it can apply to other races besides European descent.
 - no new code added
 
-## Checkpoint-2
+### Checkpoint-2 (04/26/2020)
 - Describe the source of the backup dataset, the population that the data represents, whether that population is relevant to the question at hand, while addressing possible questions of data reliability. (Scott)
 - Perform preprocessing quality controls using Plink commands (Jared, Tony)
 - Statistically assess the quality of the data (Tony)
