@@ -19,14 +19,14 @@ To run the whole experiment: `python run.py test-project`
 To run the project step by step: `python run.py` with following flags:
 `get_data`: download the raw data/ tools needed and store them in `data/`.   
 `filter`: filter the dataset with [PLINK 1.9](https://www.cog-genomics.org/plink/). The specific parameter choices could be found in the paper.    
-`pca`: run principal component analysis with [PLINK 1.9](https://www.cog-genomics.org/plink/).
-`plot_pca`: plot first 5 principal components and store the result in `data/output/`
-`plot_eigenval`: plot the scree plot. 
-`logistic`: run the association test with logistic regression. 
-`manhattan`: plot the manhattan plot with [bioinfokit](https://reneshbedre.github.io//blog/howtoinstall.html).
-`regional`: plot regional plots for the nine genes. 
-`qqplot`: plot a qqplot on the test result
-`meta`: run metal analysis with [METAL](https://genome.sph.umich.edu/wiki/METAL_Documentation).
+`pca`: run principal component analysis with [PLINK 1.9](https://www.cog-genomics.org/plink/).  
+`plot_pca`: plot first 5 principal components and store the result in `data/output/`.  
+`plot_eigenval`: plot the scree plot.   
+`logistic`: run the association test with logistic regression.   
+`manhattan`: plot the manhattan plot with [bioinfokit](https://reneshbedre.github.io//blog/howtoinstall.html).  
+`regional`: plot regional plots for the nine genes.   
+`qqplot`: plot a qqplot on the test result.  
+`meta`: run metal analysis with [METAL](https://genome.sph.umich.edu/wiki/METAL_Documentation).  
 
 ## Checkpoint-1
 - Request data from source: UK Biobank and NIAGADS
