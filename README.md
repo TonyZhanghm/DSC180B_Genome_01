@@ -6,6 +6,8 @@ Visualization Website: https://tonyzhanghm.github.io/adgwas_website/
 
 ## Introduction
 
+In this study, we conducted a Genome-Wise Analysis Study on Late-Onset Alzheimer's Disease (LOAD). For experiment details, please refer to the [paper](https://github.com/TonyZhanghm/DSC180B_Genome_01/blob/master/GWAS_on_Alzheimer_s_Disease_report.pdf). 
+
 ## Usage
 
 ### Environment (Docker)
